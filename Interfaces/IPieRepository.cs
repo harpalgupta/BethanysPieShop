@@ -7,7 +7,7 @@ namespace BethanysPieShop.Interfaces
     {
         public IEnumerable<Pie> AllPies { get; }
         public IEnumerable<Pie> PiesOfTheWeek { get;  }
-        public Pie GetPieById(int Id);
+        public Pie GetPieById(int Id)  ;
         
     }
 }
