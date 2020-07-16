@@ -37,6 +37,9 @@ namespace BethanysPieShop
             services.AddScoped<IPieRepository, PieRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
 
+            //Add session service
+            services.AddHttpContextAccessor();
+            services.AddSession();
           
         }
 
@@ -63,6 +66,9 @@ namespace BethanysPieShop
                     pattern: "{controller=Home}/{action=Index}/{id:int?}"
                 );
             });
+
+            //Middleware to utilise session
+            app.UseSession();
         }
     }
 }
