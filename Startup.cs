@@ -51,15 +51,16 @@ namespace BethanysPieShop
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseRouting();
             app.UseStatusCodePages();
+            //Add convention based routing
+            app.UseRouting();
 
-
+            //Default routing
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}"
+                    pattern: "{controller=Home}/{action=Index}/{id:int?}"
                 );
             });
         }
