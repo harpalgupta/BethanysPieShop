@@ -36,7 +36,8 @@ namespace BethanysPieShop
             //One Instance of service per http request
             services.AddScoped<IPieRepository, PieRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
-
+            services.AddScoped<ShoppingCart>(sp=>ShoppingCart.GetCart(sp));
+         
             //Add session service
             services.AddHttpContextAccessor();
             services.AddSession();
@@ -55,6 +56,11 @@ namespace BethanysPieShop
             app.UseStaticFiles();
 
             app.UseStatusCodePages();
+
+
+            //Middleware to utilise session
+            app.UseSession();
+
             //Add convention based routing
             app.UseRouting();
 
@@ -67,8 +73,6 @@ namespace BethanysPieShop
                 );
             });
 
-            //Middleware to utilise session
-            app.UseSession();
         }
     }
 }
